@@ -8,7 +8,8 @@ import CatShow from './pages/CatShow'
 import CatNew from './pages/CatNew'
 import CatEdit from './pages/CatEdit'
 import NotFound from './pages/NotFound'
-
+import './mockCats'
+import Header from './components/Header'
 
 
 export default class App extends Component {
@@ -17,8 +18,9 @@ export default class App extends Component {
      
        <Router>
          <Switch>
+           <Header/>
             <Route exact path="/" component={Home} />
-            <Route path="/catindex" component={CatIndex} />
+            <Route path="/dogindex" component={CatIndex} />
             <Route path="/catshow" component={CatShow} />
             <Route path="/catnew" component={CatNew} />
             <Route path="/catedit" component={CatEdit} />
