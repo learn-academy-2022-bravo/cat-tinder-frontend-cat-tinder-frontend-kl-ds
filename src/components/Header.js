@@ -30,6 +30,11 @@ class Header extends Component {
            See the Dogs
           </NavLink>
         </NavItem>
+        <NavItem>
+          <NavLink href="/catnew">
+           Add a Dog
+          </NavLink>
+        </NavItem>
       </Nav>
     </Collapse>
   </Navbar>
