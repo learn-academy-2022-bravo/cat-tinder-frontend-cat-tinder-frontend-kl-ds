@@ -4,7 +4,7 @@ class NotFound extends Component {
     render() {
         return (
             <div>
-                <hi>NotFound Component</hi>
+                <h1>Something went wrong..</h1>
             </div>
         );
     }

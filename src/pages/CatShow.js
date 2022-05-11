@@ -4,7 +4,7 @@ class CatShow extends Component {
     render() {
         return (
             <div>
-                <hi>CatShow Component</hi>
+                <h1>CatShow Component</h1>
             </div>
         );
     }
