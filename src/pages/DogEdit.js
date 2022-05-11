@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class CatEdit extends Component {
+class DogEdit extends Component {
     render() {
         return (
             <div>
-                <h1>CatEdit Component</h1>
+                <h1>DogEdit Component</h1>
             </div>
         );
     }
 }
 
-export default CatEdit;
+export default DogEdit;

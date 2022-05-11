@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 
-class CatIndex extends Component {
+class DogIndex extends Component {
   render() {
     return(
       <>
         <h2>Dog Index</h2>
-        {this.props.cats && this.props.cats.map(cat => {
+        {this.props.dogs && this.props.dogs.map(dog => {
           return <div>
-              <NavLink className="nav-spacing" to={`/catshow/${cat.id}`} key={cat.id}>{cat.name}</NavLink>
+              <NavLink className="nav-spacing" to={`/dogshow/${dog.id}`} key={dog.id}>{dog.name}</NavLink>
           </div>
                 
         })}
@@ -16,4 +16,4 @@ class CatIndex extends Component {
     )
   }
 }
-export default CatIndex
+export default DogIndex

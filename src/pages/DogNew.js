@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap'
 import { Redirect } from 'react-router-dom'
 
-class CatNew extends Component {
+class DogNew extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      newCat: {
+      newdog: {
         name: "",
         age: "",
         enjoys: "",
@@ -17,13 +17,13 @@ class CatNew extends Component {
   }
 
   handleChange = (e) => {
-    const { newCat } = this.state
-    newCat[e.target.name] = e.target.value
-    this.setState({newCat: newCat})
+    const { newdog } = this.state
+    newdog[e.target.name] = e.target.value
+    this.setState({newdog: newdog})
   }
 
   handleSubmit = () => {
-    this.props.createCat(this.state.newCat)
+    this.props.createdog(this.state.newdog)
     this.setState({submitted: true})
   }
 
@@ -69,9 +69,9 @@ class CatNew extends Component {
             
           Submit Dog
         </Button>
-        { this.state.submitted && <Redirect to="/catindex"/> }
+        { this.state.submitted && <Redirect to="/dogindex"/> }
       </>
     )
   }
 }
-export default CatNew
+export default DogNew
