@@ -26,7 +26,7 @@ class Header extends Component {
           </NavLink>
         </NavItem>
         <NavItem>
-          <NavLink href="/dogindex">
+          <NavLink href="/catindex">
            See the Dogs
           </NavLink>
         </NavItem>
