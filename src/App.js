@@ -3,22 +3,25 @@ import { Route } from 'react-router-dom'
 import { Switch } from 'react-router-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
 import Home from './pages/Home'
-import CatIndex from './pages/CatIndex'
-import CatShow from './pages/CatShow'
-import CatNew from './pages/CatNew'
-import CatEdit from './pages/CatEdit'
+import DogIndex from './pages/DogIndex'
+import DogShow from './pages/DogShow'
+import DogNew from './pages/DogNew'
+import DogEdit from './pages/DogEdit'
 import NotFound from './pages/NotFound'
-import './mockCats'
 import Header from './components/Header'
 import Footer from './components/Footer'
-import cats from './mockCats'
+import dogs from './mockDogs'
 
 export default class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      cats: cats
+      dogs: dogs
     }
+  }
+
+  createdog = (newlyCreateddog) => {
+    console.log(newlyCreateddog)
   }
   render() {
     return (
@@ -28,19 +31,24 @@ export default class App extends Component {
          <Switch>
            <Route exact path="/" component={Home} />
           <Route
-            path="/catindex"
-            render={(props) => <CatIndex cats={this.state.cats} />}
+            path="/DogIndex"
+            render={(props) => <DogIndex dogs={this.state.dogs} />}
           />
            <Route 
-            path="/catshow/:id" 
+            path="/DogShow/:id" 
             render={(props) => {
               let id = +props.match.params.id
-              let cat = this.state.cats.find(catObject => catObject.id === id)
-              return <CatShow cat={cat}/>
+              let dog = this.state.dogs.find(dogObject => dogObject.id === id)
+              return <DogShow dog={dog}/>
             }}
           />
-           <Route path="/catnew" component={CatNew} />
-           <Route path="/catedit" component={CatEdit} />
+           <Route
+            path="/DogNew"
+            render={() => {
+              return <DogNew createdog={this.createdog}/>
+            }}
+          />
+           <Route path="/DogEdit" component={DogEdit} />
            <Route component={NotFound}/> 
         </Switch>  
         <Footer/>
