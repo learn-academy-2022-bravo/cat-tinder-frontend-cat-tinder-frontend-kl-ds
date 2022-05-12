@@ -20,9 +20,15 @@ export default class App extends Component {
     }
   }
 
-  createdog = (newlyCreateddog) => {
-    console.log(newlyCreateddog)
+  createDog = (newlyCreatedDog) => {
+    console.log(newlyCreatedDog)
   }
+
+  updateDog = (dog, id) => {
+    console.log("dog:", dog)
+    console.log("id:", id)
+  }
+  
   render() {
     return (
      
@@ -35,7 +41,7 @@ export default class App extends Component {
             render={(props) => <DogIndex dogs={this.state.dogs} />}
           />
            <Route 
-            path="/DogShow/:id" 
+            path="/dogshow/:id" 
             render={(props) => {
               let id = +props.match.params.id
               let dog = this.state.dogs.find(dogObject => dogObject.id === id)
@@ -49,6 +55,11 @@ export default class App extends Component {
             }}
           />
            <Route path="/DogEdit" component={DogEdit} />
+           <Route path="/DogEdit/:id" render={(props) => {
+            let id = props.match.params.id
+            let dog = this.state.dogs.find(dog => dog.id === +id)
+            return <DogEdit updateDog={this.updateDog} dog={dog} />
+          }} />
            <Route component={NotFound}/> 
         </Switch>  
         <Footer/>
