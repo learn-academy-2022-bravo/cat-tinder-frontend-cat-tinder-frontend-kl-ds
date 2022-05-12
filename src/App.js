@@ -41,7 +41,7 @@ export default class App extends Component {
             render={(props) => <DogIndex dogs={this.state.dogs} />}
           />
            <Route 
-            path="/DogShow/:id" 
+            path="/dogshow/:id" 
             render={(props) => {
               let id = +props.match.params.id
               let dog = this.state.dogs.find(dogObject => dogObject.id === id)
