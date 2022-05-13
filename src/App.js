@@ -10,14 +10,24 @@ import DogEdit from './pages/DogEdit'
 import NotFound from './pages/NotFound'
 import Header from './components/Header'
 import Footer from './components/Footer'
-import dogs from './mockDogs'
 
 export default class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      dogs: dogs
+      dogs: []
     }
+  }
+
+  componentDidMount() {
+    this.readDog()
+  }
+
+  readDog = () => {
+    fetch('http://localhost:3000/dogs')
+    .then(response => response.json())
+    .then(payload => this.setState({dogs: payload}))
+    .catch(errors => console.log("Dog read errors:", errors))
   }
 
   createdog = (newlyCreateddog) => {
