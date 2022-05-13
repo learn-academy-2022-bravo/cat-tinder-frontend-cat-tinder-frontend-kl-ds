@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import { Route } from 'react-router-dom'
-import { Switch } from 'react-router-dom'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import DogIndex from './pages/DogIndex'
 import DogShow from './pages/DogShow'
@@ -30,8 +28,17 @@ export default class App extends Component {
     .catch(errors => console.log("Dog read errors:", errors))
   }
 
-  createdog = (newlyCreateddog) => {
-    console.log(newlyCreateddog)
+  createDog = (newlyCreatedDog) => {
+    fetch('http://localhost:3000/dogs', {
+      body: JSON.stringify(newlyCreatedDog),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "POST"
+    })
+    .then(response => response.json())
+    .then(() => this.readDog())
+    .then(errors => console.log("Dog create errors:", errors))
   }
   render() {
     return (
@@ -41,11 +48,11 @@ export default class App extends Component {
          <Switch>
            <Route exact path="/" component={Home} />
           <Route
-            path="/DogIndex"
+            path="/dogindex"
             render={(props) => <DogIndex dogs={this.state.dogs} />}
           />
            <Route 
-            path="/DogShow/:id" 
+            path="/dogshow/:id" 
             render={(props) => {
               let id = +props.match.params.id
               let dog = this.state.dogs.find(dogObject => dogObject.id === id)
@@ -53,12 +60,12 @@ export default class App extends Component {
             }}
           />
            <Route
-            path="/DogNew"
+            path="/dognew"
             render={() => {
-              return <DogNew createdog={this.createdog}/>
+              return <DogNew createDog={this.createDog}/>
             }}
           />
-           <Route path="/DogEdit" component={DogEdit} />
+           <Route path="/dogedit" component={DogEdit} />
            <Route component={NotFound}/> 
         </Switch>  
         <Footer/>

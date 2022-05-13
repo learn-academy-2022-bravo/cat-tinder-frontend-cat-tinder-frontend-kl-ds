@@ -6,7 +6,7 @@ class DogNew extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      newdog: {
+      newDog: {
         name: "",
         age: "",
         enjoys: "",
@@ -17,13 +17,13 @@ class DogNew extends Component {
   }
 
   handleChange = (e) => {
-    const { newdog } = this.state
-    newdog[e.target.name] = e.target.value
-    this.setState({newdog: newdog})
+    const { newDog } = this.state
+    newDog[e.target.name] = e.target.value
+    this.setState({newDog: newDog})
   }
 
   handleSubmit = () => {
-    this.props.createdog(this.state.newdog)
+    this.props.createDog(this.state.newDog)
     this.setState({submitted: true})
   }
 
@@ -66,7 +66,6 @@ class DogNew extends Component {
           </FormGroup>
         </Form>
         <Button onClick={this.handleSubmit} name="submit">
-            
           Submit Dog
         </Button>
         { this.state.submitted && <Redirect to="/dogindex"/> }
